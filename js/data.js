@@ -1,4 +1,4 @@
-import { getRandomInt, getRandomArrayElement } from './util.js';
+import { getRandomInt, getRandomArrayElement, getUniqueRandomInt } from './util.js';
 
 const FOTO_COUNT = 25;
 
@@ -11,6 +11,11 @@ const CommentsCount = {
   MIN: 1,
   MAX: 5,
 };
+
+const CommentsId = {
+  MIN: 100,
+  MAX: 5000,
+}
 
 const AvatarsCount = {
   MIN: 1,
@@ -52,28 +57,32 @@ const NAMES = [
   'Арья Старк',
 ]
 
+const uniqCommentId = getUniqueRandomInt(CommentsId.MIN, CommentsId.MAX);
 
-const createComments = (elementIndex) => {
-  let sliceStart = getRandomInt(0, MESSAGES.length - 1);
+const createComments = () => {
+  const sliceStart = getRandomInt(0, MESSAGES.length - 1);
 
   return {
-    id: elementIndex * getRandomInt(1, FOTO_COUNT),
+    id: uniqCommentId(),
     avatar: 'img/avatar-' + getRandomInt(AvatarsCount.MIN, AvatarsCount.MAX) + '.svg',
     message:  MESSAGES.slice(sliceStart, sliceStart + getRandomInt(MessagesCount.MIN, MessagesCount.MAX)),
     name: getRandomArrayElement(NAMES),
   }
 }
 
-const createDescription = (elementIndex) => {
+const uniqDescriptionId = getUniqueRandomInt(1, FOTO_COUNT);
+const uniqPhotoUrl = getUniqueRandomInt(1, FOTO_COUNT);
+
+const createDescription = () => { 
   return {
-    id: elementIndex,
-    url: 'photos/' + elementIndex + '.jpg',
+    id: uniqDescriptionId(),
+    url: 'photos/' + uniqPhotoUrl() + '.jpg',
     description: getRandomArrayElement(FOTO_DESCRIPTIONS),
     likes: getRandomInt(LikesCount.MIN, LikesCount.MAX),
-    comments: new Array(getRandomInt(CommentsCount.MIN, CommentsCount.MAX)).fill().map(() => createComments(elementIndex)),
+    comments: new Array(getRandomInt(CommentsCount.MIN, CommentsCount.MAX)).fill().map(() => createComments()),
   };
 };
 
-const similarDescription = new Array(FOTO_COUNT).fill().map((e, i) => e = createDescription(i += 1));
+const similarDescription = new Array(FOTO_COUNT).fill().map(() => createDescription());
 
 export { similarDescription };
