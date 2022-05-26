@@ -1,3 +1,3 @@
-import { similarDescription } from './data.js';
+import { renderPictures } from './preview.js';
 
-similarDescription
+renderPictures();
