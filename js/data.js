@@ -83,6 +83,6 @@ const createDescription = () => {
   };
 };
 
-const similarDescription = new Array(FOTO_COUNT).fill().map(() => createDescription());
+const similarPosts = new Array(FOTO_COUNT).fill().map(() => createDescription());
 
-export { similarDescription };
+export { similarPosts };
