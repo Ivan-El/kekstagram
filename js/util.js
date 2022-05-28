@@ -22,4 +22,25 @@ const getRandomArrayElement = (array) => {
   return array[getRandomInt(0, array.length - 1)];
 };
 
-export { getRandomInt, isLengthValid, getRandomArrayElement };
+const getUniqueRandomInt = (min, max) => {
+  const previousValues = [];
+
+  return () => {
+    let currentValue = getRandomInt(min, max);
+    
+    if (previousValues.length >= (max - min + 1)) {
+      throw new Error('Перебраны все числа из диапазона от ' + min + ' до ' + max);
+    }
+    while (previousValues.includes(currentValue)) {
+      currentValue = getRandomInt(min, max);
+    }
+    previousValues.push(currentValue);
+    return currentValue;
+  };
+};
+
+const isEscEvent = (evt) => {
+  return evt.key === 'Escape' || evt.key === 'Esc';
+};
+
+export { getRandomInt, isLengthValid, getRandomArrayElement, getUniqueRandomInt, isEscEvent };
