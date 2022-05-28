@@ -1,21 +1,19 @@
-import { similarDescription } from './data.js'
+const renderPreview = (posts) => {
+  const previews = posts;
+  const previewContainer = document.querySelector('.pictures');
+  const previewTemplate = document.querySelector('#picture').content.querySelector('.picture');
+  const previewsFragment = document.createDocumentFragment();
 
-const pictureContainer = document.querySelector('.pictures');
-const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
+  previews.forEach(({url, likes, comments}) => {
+    const previewElement = previewTemplate.cloneNode(true);
 
-const pictures = similarDescription;
+    previewElement.querySelector('.picture__img').src = url;
+    previewElement.querySelector('.picture__likes').textContent = likes;
+    previewElement.querySelector('.picture__comments').textContent = comments.length;
+    previewsFragment.appendChild(previewElement);
+  });
 
-const picturesFragment = document.createDocumentFragment();
+  return previewContainer.appendChild(previewsFragment);
+}
 
-pictures.forEach(({url, likes, comments}) => {
-  const pictureElement = pictureTemplate.cloneNode(true);
-  pictureElement.querySelector('.picture__img').src = url;
-  pictureElement.querySelector('.picture__likes').textContent = likes;
-  pictureElement.querySelector('.picture__comments').textContent = comments.length;
-  picturesFragment.appendChild(pictureElement);
-});
-
-const renderPictures = () => pictureContainer.appendChild(picturesFragment);
-
-
-export { renderPictures }
+export { renderPreview }
