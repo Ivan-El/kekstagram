@@ -27,6 +27,7 @@ const getUniqueRandomInt = (min, max) => {
 
   return () => {
     let currentValue = getRandomInt(min, max);
+    
     if (previousValues.length >= (max - min + 1)) {
       throw new Error('Перебраны все числа из диапазона от ' + min + ' до ' + max);
     }
@@ -38,4 +39,8 @@ const getUniqueRandomInt = (min, max) => {
   };
 };
 
-export { getRandomInt, isLengthValid, getRandomArrayElement, getUniqueRandomInt };
+const isEscEvent = (evt) => {
+  return evt.key === 'Escape' || evt.key === 'Esc';
+};
+
+export { getRandomInt, isLengthValid, getRandomArrayElement, getUniqueRandomInt, isEscEvent };
