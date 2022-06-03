@@ -28,7 +28,6 @@ const renderFullscreenPictures = ({url, likes, comments, description}, container
   container.querySelector('.social__caption').textContent = description;
 };
 
-
 export { renderComments, renderFullscreenPictures }
 
 
