@@ -1,11 +1,13 @@
-import { isEscEvent } from './util.js';
+import { isEscEvent, isFocused } from './util.js';
 
 const body = document.querySelector('body');
+const hashtagInput = document.querySelector('.text__hashtags');
+const commentInput = document.querySelector('.text__description');
 
 
-const onEscKeydown = (modal) => {  
+const onEscKeydown = (modal) => {   
   return (evt) => {
-    if (isEscEvent(evt)) {
+    if (isEscEvent(evt) && !(isFocused(hashtagInput)) && !(isFocused(commentInput))) {
       evt.preventDefault();
       closeUserModal(modal);
     }
