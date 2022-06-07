@@ -1,3 +1,8 @@
+const Keys = {
+  ESC: 'Esc',
+  ESCAPE: 'Escape',
+}
+
 const getRandomInt = (min, max) => {
   if (min < 0 || max < 0) {
     return -1;
@@ -10,17 +15,11 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const isLengthValid = (string, maxLength) => {
-  if(typeof string === 'string') {
-    return string.length <= maxLength;
-  }
-
-  return alert('Неверный тип, ввидите строку');
-};
 
 const getRandomArrayElement = (array) => {
   return array[getRandomInt(0, array.length - 1)];
 };
+
 
 const getUniqueRandomInt = (min, max) => {
   const previousValues = [];
@@ -39,8 +38,29 @@ const getUniqueRandomInt = (min, max) => {
   };
 };
 
+
 const isEscEvent = (evt) => {
-  return evt.key === 'Escape' || evt.key === 'Esc';
+  return evt.key === Keys.ESC || evt.key === Keys.ESCAPE;
 };
 
-export { getRandomInt, isLengthValid, getRandomArrayElement, getUniqueRandomInt, isEscEvent };
+const isFocused = (element) => {
+  return element === document.activeElement;
+};
+
+
+const isConsistLettersNumbers = (string) => /^[0-9A-ZА-ЯЁ]+$/i.test(string);
+
+
+const isLengthValid = (string, maxLength) => {
+  if(typeof string === 'string') {
+    return string.length <= maxLength;
+  }
+};
+
+
+const findDuplicate = (array, element) => {
+  return array.indexOf(element) !== array.lastIndexOf(element)
+};
+
+
+export { getRandomInt, isLengthValid, getRandomArrayElement, getUniqueRandomInt, isEscEvent, isConsistLettersNumbers, findDuplicate, isFocused };
