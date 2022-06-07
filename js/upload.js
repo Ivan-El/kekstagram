@@ -1,21 +1,35 @@
-import { initScale } from './scale.js';
-import { initEffect } from './effect.js';
+import { initScale, removeScale } from './scale.js';
+import { initEffect,removeEffect } from './effect.js';
+import { initForm, removeForm } from './form.js';
 import { openUserModal, closeUserModal } from './modal.js';
 
 
 const uploadInput= document.querySelector('#upload-file');
+const uploadInputClose = document.querySelector('#upload-cancel');
 const imgEditForm = document.querySelector('.img-upload__overlay');
-const imgEditFormClose = document.querySelector('#upload-cancel');
 
 
-const onUploadClick = (evt) => {
-  evt.preventDefault(); 
+const onUploadClick = () => {
   openUserModal(imgEditForm);
   initScale();
   initEffect();
+  initForm();
+};
+
+
+const onUploadCloseClick = () => {
+  closeUserModal(imgEditForm);
+  removeScale();
+  removeEffect();
+  removeForm();
 }
 
+const initUpload = () => {
+  uploadInput.addEventListener('click', onUploadClick);
+  uploadInputClose.addEventListener('click', onUploadCloseClick);
+}
 
-uploadInput.addEventListener('click', onUploadClick);
-imgEditFormClose.addEventListener('click', () => closeUserModal(imgEditForm));
+export { initUpload }
+
+
 

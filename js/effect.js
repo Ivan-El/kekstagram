@@ -4,7 +4,7 @@ const effectsList = document.querySelector('.effects__list');
 const uploadImgPreview = document.querySelector('.img-upload__preview img');
 
 
-const onEffectChange = (evt) => {
+const onEffectClick = (evt) => {
   const target = evt.target; 
   uploadImgPreview.className = '';
   
@@ -24,7 +24,11 @@ const onEffectChange = (evt) => {
 const initEffect = () => {
   hideSlider();
   uploadImgPreview.className = '';
-  effectsList.addEventListener('click', onEffectChange);
+  effectsList.addEventListener('click', onEffectClick);
 };
 
-export { initEffect }
+const removeEffect = () => {
+  effectsList.removeEventListener('click', onEffectClick);
+}
+
+export { initEffect, removeEffect }

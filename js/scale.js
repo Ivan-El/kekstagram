@@ -55,7 +55,11 @@ const onImgScaleClick = (evt) => {
 const initScale = () => {
   imgScaleOtput.value = scale.setOutputValue()
   uploadImgPreview.style.transform = scale.setTransformValue();
-  imgScale.addEventListener('click', onImgScaleClick)
+  imgScale.addEventListener('click', onImgScaleClick);
 };
 
-export { initScale }
+const removeScale = () => {
+  imgScale.removeEventListener('click', onImgScaleClick);  
+}
+
+export { initScale, removeScale }
