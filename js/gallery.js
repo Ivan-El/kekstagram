@@ -1,10 +1,16 @@
-import { similarPosts } from './data.js';
+import { showAlert } from './util.js'
 import { renderPreview } from './preview.js';
 import { openUserModal, closeUserModal } from './modal.js';
 import { renderComments, renderFullscreenPictures } from './fullscreen.js';
 
-const renderGallery = () => {
-  renderPreview(similarPosts);
+
+const renderGallery = (posts, err) => { 
+  renderPreview(posts);
+
+  if (err) {
+    showAlert(err);
+  } 
+
   // На время убираем счетчики 
   const fotoCommentCount = document.querySelector('.social__comment-count');
   const fotoCommentLoader = document.querySelector('.comments-loader');
@@ -15,17 +21,15 @@ const renderGallery = () => {
   const fullScreenContainer = document.querySelector('.big-picture');
   const fullScreenContainerClose = fullScreenContainer.querySelector('.big-picture__cancel');
 
-
   const onPreviewClick = (previewElement) => {
     return () => {
       openUserModal(fullScreenContainer);            
       renderFullscreenPictures(previewElement, fullScreenContainer); 
       renderComments(previewElement);    
     } 
-  }
+  };
 
-
-  previews.forEach((preview, previewIndex) => preview.addEventListener('click', onPreviewClick(similarPosts[previewIndex])));
+  previews.forEach((preview, previewIndex) => preview.addEventListener('click', onPreviewClick(posts[previewIndex])));
   fullScreenContainerClose.addEventListener('click', () => closeUserModal(fullScreenContainer));
 }
 
