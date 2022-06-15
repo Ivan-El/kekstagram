@@ -13,7 +13,7 @@ const renderComments = (previewElement) => {
     const newComment = commentTemplate.cloneNode(true);
     newComment.querySelector('.social__picture').src = avatar; 
     newComment.querySelector('.social__picture').alt = name; 
-    newComment.querySelector('.social__text').textContent = message.join(' ');
+    newComment.querySelector('.social__text').textContent = message;
     commentsFragment.appendChild(newComment);   
   }); 
 
@@ -29,37 +29,3 @@ const renderFullscreenPictures = ({url, likes, comments, description}, container
 };
 
 export { renderComments, renderFullscreenPictures }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const clearComments = () => {
-//   commentContainer.innerHTML = '';
-// };
-
-// Напишите код для закрытия окна по нажатию клавиши Esc и клике по иконке закрытия.
-// Подключите модуль в проект.
-
-// Задача не имеет одного верного решения, поэтому будет правильным как использование третьего модуля
-// для связки двух других, так и импорт модуля полноразмерных изображений в модуль миниатюр и дальнейшая
-// работа с интерфейсом этого модуля, `addEventListener` и замыканиями. Последнее решение похоже на
-// демонстрацию по учебному проекту. А первое — с третьим модулем — более сложное из-за отсутствия примера,
-// но самостоятельное. В качестве третьего модуля можно выбрать точку входа, а можно завести отдельный модуль,
-// например «Галерея». Решение за вами.
