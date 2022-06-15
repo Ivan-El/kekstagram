@@ -9,7 +9,7 @@ const uploadInputClose = document.querySelector('#upload-cancel');
 const imgEditForm = document.querySelector('.img-upload__overlay');
 
 
-const onUploadClick = () => {
+const startUpload = () => {
   openUserModal(imgEditForm);
   initScale();
   initEffect();
@@ -17,7 +17,7 @@ const onUploadClick = () => {
 };
 
 
-const onUploadCloseClick = () => {
+const cancelUpload = () => {
   closeUserModal(imgEditForm);
   removeScale();
   removeEffect();
@@ -25,11 +25,11 @@ const onUploadCloseClick = () => {
 }
 
 const initUpload = () => {
-  uploadInput.addEventListener('click', onUploadClick);
-  uploadInputClose.addEventListener('click', onUploadCloseClick);
+  uploadInput.addEventListener('click', startUpload);
+  uploadInputClose.addEventListener('click', cancelUpload);
 }
 
-export { initUpload }
+export { initUpload, cancelUpload }
 
 
 

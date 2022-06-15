@@ -83,6 +83,6 @@ const createDescription = () => {
   };
 };
 
-const similarPosts = new Array(FOTO_COUNT).fill().map(() => createDescription());
+const randomPosts = new Array(FOTO_COUNT).fill().map(() => createDescription());
 
-export { similarPosts };
+export { randomPosts };

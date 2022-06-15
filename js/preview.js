@@ -3,7 +3,7 @@ const renderPreview = (posts) => {
   const previewContainer = document.querySelector('.pictures');
   const previewTemplate = document.querySelector('#picture').content.querySelector('.picture');
   const previewsFragment = document.createDocumentFragment();
-
+  
   previews.forEach(({url, likes, comments}) => {
     const previewElement = previewTemplate.cloneNode(true);
 
@@ -14,6 +14,7 @@ const renderPreview = (posts) => {
   });
 
   return previewContainer.appendChild(previewsFragment);
-}
+};
 
 export { renderPreview }
+
