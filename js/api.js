@@ -7,13 +7,13 @@ const getData = (onSuccess, onError) => {
 
       throw new Error(`${response.status} ${response.statusText}`);
     })
-  
+
     .then((previews) => {
       onSuccess(previews);
     })
 
     .catch((err) => {
-      onError(`Ошибка запроса к серверу "${err.message}". Показаны данные для тестирования`);      
+      onError(`Ошибка запроса к серверу "${err.message}". Показаны данные для тестирования`);
     });
 };
 

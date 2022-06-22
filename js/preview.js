@@ -1,10 +1,11 @@
 const renderPreview = (posts) => {
-  const previews = posts;
   const previewContainer = document.querySelector('.pictures');
   const previewTemplate = document.querySelector('#picture').content.querySelector('.picture');
   const previewsFragment = document.createDocumentFragment();
-  
-  previews.forEach(({url, likes, comments}) => {
+  const pictures = document.querySelectorAll('.picture');
+
+
+  posts.forEach(({url, likes, comments}) => {
     const previewElement = previewTemplate.cloneNode(true);
 
     previewElement.querySelector('.picture__img').src = url;
@@ -13,6 +14,7 @@ const renderPreview = (posts) => {
     previewsFragment.appendChild(previewElement);
   });
 
+  pictures.forEach((element) => element.remove());
   return previewContainer.appendChild(previewsFragment);
 };
 
