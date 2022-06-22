@@ -4,6 +4,7 @@ const Keys = {
 };
 
 const ALERT_SHOW_TIME = 5000;
+const DEBOUNCE_INTERVAL = 300;
 
 const getRandomInt = (min, max) => {
   if (min < 0 || max < 0) {
@@ -13,7 +14,7 @@ const getRandomInt = (min, max) => {
   if (max < min) {
     [min, max] = [max, min];
   }
-      
+
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
@@ -28,7 +29,7 @@ const getUniqueRandomInt = (min, max) => {
 
   return () => {
     let currentValue = getRandomInt(min, max);
-    
+
     if (previousValues.length >= (max - min + 1)) {
       throw new Error('Перебраны все числа из диапазона от ' + min + ' до ' + max);
     }
@@ -78,13 +79,37 @@ const showAlert = (error) => {
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
   alertContainer.textContent = error;
-  
+
   document.body.append(alertContainer);
 
   setTimeout(() => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);
-}
+};
 
 
-export { getRandomInt, isLengthValid, getRandomArrayElement, getUniqueRandomInt, isEscEvent, isConsistLettersNumbers, findDuplicate, isFocused, showAlert };
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  return array
+};
+
+
+const debounce = (cb) => {
+  let lastTimeout = null;
+
+  return (...args) => {
+    if (lastTimeout) {
+      window.clearTimeout(lastTimeout);
+    }
+    lastTimeout = window.setTimeout(() => {
+      cb(...args);
+    }, DEBOUNCE_INTERVAL);
+  };
+};
+
+
+export { getRandomInt, isLengthValid, getRandomArrayElement, getUniqueRandomInt, isEscEvent, isConsistLettersNumbers, findDuplicate, isFocused, showAlert, shuffleArray, debounce };
