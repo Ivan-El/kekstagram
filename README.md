@@ -41,7 +41,7 @@
 
 <img src="build/img/effect-preview.gif" width="100%">
 
-<p>Add hash tags and comment. When you write a hash tag or comment, a validation hint appears</p>
+<p>Add hash tags and comment. When you write a hash tag or comment, a validation hint appears.</p>
 
 <img src="build/img/validation-preview.gif" width="100%">
 
@@ -51,9 +51,7 @@
 
 <h3>About the project.</h3>
 
-<p>Kekstagram is my first project in which I wrote only javaScript code.</p> 
-
-<p>In this project, I used the main features of Javascript. Used built-in objects and functions. I got acquainted with the DRY principle and modules. Worked with DOM and events. I got acquainted with external APIs and third-party libraries. Interacted with the network considered the HTTP protocol, the JSON data format. I worked with asynchrony and achieved it with the help of promises. Created a simple build on webpack.</p>
+<p>Kekstagram is my first project in which I wrote only javaScript code. In this project, I used the main features of Javascript. Used built-in objects and functions. I got acquainted with the DRY principle and modules. Worked with DOM and events. I got acquainted with external APIs and third-party libraries. Interacted with the network considered the HTTP protocol, the JSON data format. I worked with asynchrony and achieved it with the help of promises. Created a simple build on webpack.</p>
 
 <h3>Technologies.</h3>
 
